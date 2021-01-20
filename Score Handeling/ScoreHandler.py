@@ -1,9 +1,3 @@
-import os, requests, math
-
-header = {
-    "User-Agent": "ChallengePoints (https://github.com/thijnmens/ChallengePoints)"
-}
-
 #Get Scores from BeatSavior
 def getScore(userID):
     weight = int(input('What is the weight of the map?:\n'))
