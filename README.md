@@ -36,4 +36,4 @@ This one is a bit more difficult, so bare with me here, so basically what it doe
 
 This one is also a selfexplenatory one, it takes the avg distance between the notes.
 
-### The amount of points is the distance between the notes
+#### The amount of points is the distance between the notes
