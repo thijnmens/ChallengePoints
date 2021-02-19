@@ -7,8 +7,8 @@ mods = input('modifiers: ').split(', ')
 notes = int(input('notes: '))
 weight = int(input('weight: '))
 
-pog = modtoraw(score, mods)
-acc = scoretoacc(notes, pog)
+pog = modToRaw(score, mods)
+acc = scoreToAcc(notes, pog)
 cp = getScore(0, acc, weight)
 
 print('--------------')

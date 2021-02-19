@@ -1,6 +1,7 @@
+import json
+from math import sqrt
 
-
-def modtoraw(score, mods):
+def modToRaw(score, mods):
     ######################################
     # List of mods                       #
     # NF, NO, NB, SS, IF, BE, DA, FS, GN #
@@ -32,7 +33,7 @@ def modtoraw(score, mods):
     round(score, 0)
     return score
 
-def scoretoacc(notes, score):
+def scoreToAcc(notes, score):
     notes = notes - 14
     a = notes*920
     b = a+4830
@@ -48,3 +49,61 @@ def getScore(userID, acc, weight):
         h = 0
     cp = round(weight*h, 2)
     return cp
+
+def getLenghtD(a, b):
+    c = sqrt(a * a + b * b)
+    return c
+
+def getNotes(file):
+    lines = open(file, "r").read().split('\"_notes\":[')
+    notes = str(lines[1]).split('],"_obstacles":')
+    return notes[0]
+
+def createChunks(notes):
+    notesarray = str(notes).split(',')
+    ###############
+    # Beat 0 dict #
+    ###############
+    a = 0   #While loop counter
+    d = 0   #Begin of chunk
+    b = 2   #End of chunk
+    e = 0   #Chunk Naming
+    chunk = []
+    chunkdict = {}
+    while a < len(notesarray):
+        c = str(notesarray[a]).split(':')
+        if c[0] == '{"_time"':
+            if float(c[1]) >= b:
+                chunkdict[f'chunk{e}'] = chunk
+                chunk = []
+                d = d + 2
+                b = b + 2
+                e = e + 1
+            if float(c[1]) >= d and float(c[1]) <= b:
+                chunk.append(f'{notesarray[a]},{notesarray[a+1]},{notesarray[a+2]},{notesarray[a+3]},{notesarray[a+4]}')
+        a = a + 1
+    with open("dict0.json", "w") as outfile:  
+        json.dump(chunkdict, outfile)
+    ###############
+    # Beat 1 dict #
+    ###############
+    a = 0   #While loop counter
+    d = 1   #Begin of chunk
+    b = 3   #End of chunk
+    e = 0   #Chunk Naming
+    chunk = []
+    chunkdict = {}
+    while a < len(notesarray):
+        c = str(notesarray[a]).split(':')
+        if c[0] == '{"_time"':
+            if float(c[1]) >= b:
+                chunkdict[f'chunk{e}'] = chunk
+                chunk = []
+                d = d + 2
+                b = b + 2
+                e = e + 1
+            if float(c[1]) >= d and float(c[1]) <= b:
+                chunk.append(f'{notesarray[a]},{notesarray[a+1]},{notesarray[a+2]},{notesarray[a+3]},{notesarray[a+4]}')
+        a = a + 1
+    with open("dict1.json", "w") as outfile:  
+        json.dump(chunkdict, outfile)
