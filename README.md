@@ -40,4 +40,4 @@ This one is also a selfexplenatory one, it takes the avg distance between the no
 
 ## Total
 
-There are 2 values we get at the end, the Total RAW value and the Total value, the total raw value is all the points added up normally, and the Total value is the Total RAW value divided by 15
+There are 2 values we get at the end, the Total RAW value and the Total value, the total raw value is all the points added up normally, and the Total value is the Total RAW value divided by 10
