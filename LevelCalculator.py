@@ -1,5 +1,6 @@
 import json
 from functionlib import *
+from math import pi, acos, sqrt
 input('Please make sure the file you want to evaluate is in the same folder as this file and is called "song.dat"\n press enter to continue')
 
 #Split song into chunks
@@ -9,20 +10,60 @@ with open('dict0.json') as json_file:
     dict0 = json.load(json_file)
 with open('dict1.json') as json_file:
     dict1 = json.load(json_file)
-#While loops to cycle through the dicts and collect all the LineIndex' and LineLayers (Point A and B) and collect the Notes/Chunk
+#While loops to cycle through the dicts and collect all data needed
 a = 0
 lines1 = []
+cutdir1 = []
 NC = 0
+NS = 0
+while a < len(dict0):
+    d = 0
+    while True:
+        try:
+            b = str(dict0[f'chunk{a}'][d]).split(',')
+            line = str(b[1]).split(':')[1]
+            type = str(b[3]).split(':')[1]
+            if type == '0':
+                if line != '0' or line != '1':
+                    NS = NS + 1
+            elif type == '1':
+                if line != '2' or line != '3':
+                    NS = NS + 1
+            d = d + 1
+        except IndexError:
+            d = 0
+            break
+    a = a + 1
+a = 0
+while a < len(dict1):
+    d = 0
+    while True:
+        try:
+            b = str(dict1[f'chunk{a}'][d]).split(',')
+            line = str(b[1]).split(':')[1]
+            type = str(b[3]).split(':')[1]
+            if type == '0':
+                if line != '0' or line != '1':
+                    NS = NS + 1
+            elif type == '1':
+                if line != '2' or line != '3':
+                    NS = NS + 1
+            d = d + 1
+        except IndexError:
+            d = 0
+            break
+    a = a + 1
+a = 0
 while a < len(dict0):
     NC = NC + (len(f'dict0[chunk{a}]')*0.25)
-    if dict0[f'chunk{a}'] != [] and len(dict0[f'chunk{a}']) >= 3:
-        b = str(dict0[f'chunk{a}']).split('\'')
-        c = len(dict0[f'chunk{a}'])
+    if dict0[f'chunk{a}'] != []:
+        NC = NC + (len(f'dict0[chunk{a}]')*0.25)
         d = 0
         while True:
             try:
                 e = str(dict0[f'chunk{a}'][d]).split(',')
                 lines1.append(f'{a}~{e[1]}~{e[2]}')
+                cutdir1.append(f'{a}~{e[4]}')
                 d = d + 1
             except IndexError:
                 d = 0
@@ -30,22 +71,21 @@ while a < len(dict0):
     a = a + 1
 a = 0
 lines2 = []
+cutdir2 = []
 while a < len(dict1):
-    NC = NC + (len(f'dict1[chunk{a}]')*0.25)
-    if dict1[f'chunk{a}'] != [] and len(dict1[f'chunk{a}']) >= 3:
-        b = str(dict1[f'chunk{a}']).split('\'')
-        c = len(dict1[f'chunk{a}'])
+    NC = NC + (len(f'dict0[chunk{a}]')*0.25)
+    if dict1[f'chunk{a}'] != []:
         d = 0
         while True:
             try:
-                e = str(dict1[f'chunk{a}'][d]).split(',')
+                e = str(dict0[f'chunk{a}'][d]).split(',')
                 lines2.append(f'{a}~{e[1]}~{e[2]}')
+                cutdir2.append(f'{a}~{e[4]}')
                 d = d + 1
             except IndexError:
                 d = 0
                 break
     a = a + 1
-print(f'Amount of notes: {NC}')
 #Create dict with triangles
 a = 0
 b = 0
@@ -106,5 +146,28 @@ while a < len(triangles2):
         break
     a = a + 1
 ASD = round(ASD, 2)
+#Get coordiantes of the blocks and put them through the notesToAngle function
+a = 0
+AGC = 0
+while a <len(lines1):
+    try:
+        b = str(lines1[a]).split('~')
+        d = str(b[2]).split(':')
+        b = str(b[1]).split(':')
+        e = str(lines2[a]).split('~')
+        f = str(e[2]).split(':')
+        e = str(e[1]).split(':')
+        c = str(str(cutdir1[a]).split(':')[1]).split('}')
+        g = str(str(cutdir2[a]).split(':')[1]).split('}')
+        angle = eval(str(notesToAngle(c[0], int(b[1]), int(d[1]), g[0],int(f[1]), int(e[1]))))*180/math.pi
+        AGC = AGC + angle
+    except IndexError:
+        None
+    a = a + 1
+AGC = round(AGC/(a*0.15), 2)
+print(f'Avg Angle Change: {AGC}')
 print(f'Avg Swing Distance: {ASD}')
-print(f'Total: {round(ASD+NC, 2)}')
+print(f'Amount of notes: {NC}')
+print(f'Natural side: {NS}')
+print(f'Total RAW: {ASD+NC+NS+AGC}')
+print(f'Total: {round((ASD+NC+NS+AGC)/15, 2)}')

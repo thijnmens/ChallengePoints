@@ -1,5 +1,5 @@
-import json
-import math
+import json, math, sympy
+from math import acos, pi
 
 def modToRaw(score, mods):
     ######################################
@@ -107,3 +107,70 @@ def createChunks(notes):
         a = a + 1
     with open("dict1.json", "w") as outfile:  
         json.dump(chunkdict, outfile)
+
+def notesToAngle(CutDir1, x1, y1, CutDir2, x2, y2):
+    x3 = 0
+    y3 = 0
+    x4 = 0
+    y4 = 0
+    if CutDir1 == 0:
+        x3 = x1
+        y3 = y1 + 1
+    elif CutDir1 == 1:
+        x3 = x1
+        y3 = y1 - 1
+    elif CutDir1 == 2:
+        x3 = x1 - 1
+        y3 = y1
+    elif CutDir1 == 3:
+        x3 = x1 + 1
+        y3 = y1
+    elif CutDir1 == 4:
+        x3 = x1 - 1
+        y3 = y1 + 1
+    elif CutDir1 == 5:
+        x3 = x1 + 1
+        y3 = y1 + 1
+    elif CutDir1 == 6:
+        x3 = x1 - 1
+        y3 = y1 - 1
+    elif CutDir1 == 7:
+        x3 = x1 + 1
+        y3 = y1 - 1
+    elif CutDir1 == 8:
+        x3 = x1 + 1
+        y3 = y1 + 1
+    elif CutDir2 == 0:
+        x4 = x2
+        y4 = y2 + 1
+    elif CutDir2 == 1:
+        x4 = x2
+        y4 = y2 - 1
+    elif CutDir2 == 2:
+        x4 = x2 - 1
+        y4 = y2
+    elif CutDir2 == 3:
+        x4 = x2 + 1
+        y4 = y2
+    elif CutDir2 == 4:
+        x4 = x2 - 1
+        y4 = y2 + 1
+    elif CutDir2 == 5:
+        x4 = x2 + 1
+        y4 = y2 + 1
+    elif CutDir2 == 6:
+        x4 = x2 - 1
+        y4 = y2 - 1
+    elif CutDir2 == 7:
+        x4 = x2 + 1
+        y4 = y2 - 1
+    elif CutDir2 == 8:
+        x4 = x2 + 1
+        y4 = y2 + 1
+    try:
+        a = sympy.Line((x1, y1), (x3, y3))
+        b = sympy.Line((x2, y2), (x4, y4))
+        angle = a.smallest_angle_between(b)
+    except ValueError:
+        angle = 0
+    return angle
