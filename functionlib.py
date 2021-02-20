@@ -1,5 +1,5 @@
 import json
-from math import sqrt
+import math
 
 def modToRaw(score, mods):
     ######################################
@@ -50,8 +50,8 @@ def getScore(userID, acc, weight):
     cp = round(weight*h, 2)
     return cp
 
-def getLenghtD(a, b):
-    c = sqrt(a * a + b * b)
+def getLenght(x1, x2, y1, y2):
+    c = math.hypot(x2 - x1, y2 - y1)
     return c
 
 def getNotes(file):

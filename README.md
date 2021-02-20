@@ -18,7 +18,7 @@ So the map is devided into chunks and those chunks give point values which later
 
 This one is selfexplainatory, its the amount of notes in a chunk.
 
-#### 1 note = 1 point
+#### 1 note = 0.25 point
 
 ## Notes on the natural side
 
