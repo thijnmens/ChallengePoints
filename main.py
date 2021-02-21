@@ -5,7 +5,7 @@ print('--------------')
 score = int(input('Score: '))
 mods = input('modifiers: ').split(', ')
 notes = int(input('notes: '))
-weight = int(input('weight: '))
+weight = float(input('weight: '))
 
 pog = modToRaw(score, mods)
 acc = scoreToAcc(notes, pog)
