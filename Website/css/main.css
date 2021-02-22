@@ -1,0 +1,116 @@
+@font-face {
+	font-family: 'Cooper Black';
+	src: url('/fonts/cooper-black.otf');
+}
+
+.background {
+	background-color: #222222;
+}
+
+.cooper {
+	font-family: 'Cooper Black', serif;
+	font-size: 20px;
+}
+
+.header {
+	font-size: 25px;
+}
+
+.menubar {
+	size: 50px;
+}
+
+.box1 {
+	float: left;
+	height: 60px;
+	width: 300px;
+	margin-top: 50px;
+	margin-left: 50px;
+	clear: both;
+	border-radius: 10px;
+}
+
+.blur {
+	filter: blur(1px);
+}
+
+.red {
+	background-color: #8d0000;
+}
+
+.white {
+	color: white;
+}
+
+.gray {
+	color: #7c7c7c;
+}
+
+.float-left {
+	float: left;
+	margin: 10px;
+}
+
+.shadow {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+}
+
+.offset {
+	border-left: -100px;
+}
+
+.active {
+	background-color: #272727;
+}
+
+.pfp {
+	width: 32px;
+	height: 32px;
+	border-radius: 16px;
+}
+
+h1 {
+	color: white;
+}
+
+p {
+	color: white;
+}
+
+table {
+	color: white;
+}
+
+article {
+	padding: 30px;
+	background-color: #161616;
+	border-radius: 10px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #222222;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #111;
+}
