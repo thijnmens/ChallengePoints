@@ -29,7 +29,9 @@
                                     <img src="src/Team/ThiJNmEnS.png" alt="ThiJNmEnS pfp" class="float-left">
                                     <h2>ThiJNmEnS</h2>
                                     <h3 class="gray">Developer<br>Programmer</h3>
+                                    <h4 class="gray">"My code is as garbage as ever"</h4>
                                     <h>
+                                        <input type='image' src="src/Icons/DiscordLogo.png" class="icon" onclick="copyToClipboard('ThiJNmEnS#6969')">
                                         <a href="https://scoresaber.com/u/76561198446051555"><img src="src/Icons/ScoreSaberLogo.png" class="icon"></a>
                                         <a href="https://github.com/thijnmens/"><img src="src/Icons/GithubLogo.png" class="icon"></a>
                                         <a href="https://steamcommunity.com/id/Thijnmens/"><img src="src/Icons/SteamLogo.png" class="icon"></a>
@@ -40,17 +42,21 @@
                                     <img src='src/Team/Owotsu.png' alt="BMM pfp" class="float-left">
                                     <h2>Owotsu</h2>
                                     <h3 class="gray">Head Ranking Team<br>Artist</h3>
-                                    <h>
+                                    <h4 class="gray">"Never gonna get Modeller role™️"</h4>
+                                    <h4>
+                                        <input type='image' src="src/Icons/DiscordLogo.png" class="icon" onclick="copyToClipboard('bmmyes - NO AS JUMP#0001')">
                                         <a href="https://scoresaber.com/u/2497109007053997"><img src="src/Icons/ScoreSaberLogo.png" class="icon"></a>
                                         <a href="https://twitch.tv/bmmyes"><img src="src/Icons/TwitchLogo.png" class="icon"></a>
                                         <a href="https://www.youtube.com/channel/UCf892jdQjDlLnuBO41NaYQg"><img src="src/Icons/YoutubeLogo.png" class="icon"></a>
-                                    </h>
+                                    </h4>
+
                                 </td>
                                 <td>
                                     <img src='src/Team/Aso.gif' alt="Aso pfp" class="float-left">
                                     <h2>Aso</h2>
                                     <h3 class="gray">Developer<br>Programmer</h3>
                                     <h>
+                                        <input type='image' src="src/Icons/DiscordLogo.png" class="icon" onclick="copyToClipboard('Aso#0001')">
                                         <a href="https://github.com/AsoDesu"><img src="src/Icons/GithubLogo.png" class="icon"></a>
                                         <a href="https://twitch.tv/asodesu_"><img src="src/Icons/TwitchLogo.png" class="icon"></a>
                                         <a href="https://twitter.com/AsoDesu_"><img src="src/Icons/TwitterLogo.png" class="icon"></a>
@@ -62,6 +68,7 @@
                                     <h2>Phytotitan_10</h2>
                                     <h3 class="gray">Ranking Team<br>Quality Control</h3>
                                     <h>
+                                        <input type='image' src="src/Icons/DiscordLogo.png" class="icon" onclick="copyToClipboard('Phytotitan_10#7785')">
                                         <a href="https://scoresaber.com/u/76561198375992488"><img src="src/Icons/ScoreSaberLogo.png" class="icon"></a>
                                     </h>
                                 </td>
@@ -71,6 +78,14 @@
                                     <img src="src/Team/StormPacer.gif" alt="StormPacer pfp" class="float-left">
                                     <h2>StormPacer</h2>
                                     <h3 class="gray">Ranking Team</h3>
+                                    <h4 class="gray">"Help"</h4>
+                                    <h>
+                                        <input type='image' src="src/Icons/DiscordLogo.png" class="icon" onclick="copyToClipboard('StormPacer#7788')">
+                                        <a href="https://scoresaber.com/u/76561198343533017"><img src="src/Icons/ScoreSaberLogo.png" class="icon"></a>
+                                        <a href="https://steamcommunity.com/profiles/76561198343533017/"><img src="src/Icons/SteamLogo.png" class="icon"></a>
+                                        <a href="https://www.twitch.tv/st0rmpacer"><img src="src/Icons/TwitchLogo.png" class="icon"></a>
+                                        <a href="https://www.youtube.com/channel/UCWybOB4B9Za6_gMEX3-wrRQ"><img src="src/Icons/YoutubeLogo.png" class="icon"></a>
+                                    </h>
                                 </td>
                             </tr>
                         </tbody>
@@ -84,6 +99,7 @@
                                     <h2>LicensedCrime</h2>
                                     <h3 class="gray">Helped with the Website's design</h3>
                                     <h>
+                                        <input type='image' src="src/Icons/DiscordLogo.png" class="icon" onclick="copyToClipboard('LicensedCrime#4324')">
                                         <a href="https://github.com/LicensedCrime/"><img src="src/Icons/GithubLogo.png" class="icon"></a>
                                     </h>
                                 </td>
@@ -93,5 +109,18 @@
 				</article>
 			</div>
 		</div>
+        <script>
+        function copyToClipboard (str) {
+            var el = document.createElement('textarea');
+            el.value = str;
+            el.setAttribute('readonly', '');
+            el.style = {position: 'absolute', left: '-9999px'};
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('Copied to clipboard')
+        }
+        </script>
 	</body>
 </html>
