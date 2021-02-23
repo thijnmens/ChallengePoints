@@ -9,6 +9,9 @@ type map = {
 }
 
 window.onload = async () => {
+    var wholeTable = document.getElementById('maps-table')
+    var loading = document.getElementById('loading-symbol')
+
     var maps: map[] = await (await fetch('/api/maps/all')).json()
 
     var table = document.getElementById('cp_table')
@@ -36,6 +39,8 @@ window.onload = async () => {
 
         table.appendChild(row)
     })
+    wholeTable.style.display = ""
+    loading.style.display = "none"
 }
 /*
 <tr>
