@@ -125,3 +125,7 @@ li a:hover {
 	font-size: 75px;
 	text-align: center;
 }
+
+.error {
+	color: red;
+}
