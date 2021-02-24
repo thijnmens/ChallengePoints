@@ -148,7 +148,6 @@
 						{ id: 9678, user_icon: "src/Team/ThiJNmEnS.png", user_name: "rozalthiric", map: "Repo by FREDDIE DREDD", score: 38387, acc: "89.96%", cp: 566 }
 					]
 				};
-
 				var cp_head = document.getElementById("cp_head");
 				var cp_table = document.getElementById("cp_table");
 
@@ -157,21 +156,18 @@
 
 				removeChildren(cp_head);
 				removeChildren(cp_table);
-
 				var item, html = "";
 				// fill table head
 				for(var i = 0; i < json_cp.head.length; i++) {
 					item = json_cp.head[i];
 
 					html = cp_head_template.replace("{title}", json_cp.head[i]);
-
 					cp_head.insertAdjacentHTML("beforeend", html);
 				}
 
 				// fill table body
 				for(var i = 0; i < json_cp.data.length; i++) {
 					item = json_cp.data[i];
-
 					html = cp_body_template
 						.replace("{id}", item.id)
 						.replace("{user_icon}", '<img src="' + item.user_icon + '" class="pfp" />')
