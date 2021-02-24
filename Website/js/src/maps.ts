@@ -12,7 +12,15 @@ window.onload = async () => {
     var wholeTable = document.getElementById('maps-table')
     var loading = document.getElementById('loading-symbol')
 
-    var maps: map[] = await (await fetch('/api/maps/all')).json()
+    var maps: map[] = await (await fetch('/api/maps/all')).json().catch(() => {
+        var error = document.getElementsByClassName('error')[0]
+
+        error.innerHTML = "Error getting maps. 404 Not Found"
+        error.classList.remove('hidden')
+        loading.classList.add('hidden')
+
+        return;
+    })
 
     var table = document.getElementById('cp_table')
 
@@ -39,8 +47,8 @@ window.onload = async () => {
 
         table.appendChild(row)
     })
-    wholeTable.style.display = ""
-    loading.style.display = "none"
+    wholeTable.classList.remove('hidden')
+    loading.classList.add('hidden')
 }
 /*
 <tr>
